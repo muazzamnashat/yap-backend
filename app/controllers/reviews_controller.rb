@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
 
   # POST /reviews
   def create
+    # binding.pry
     @review = Review.new(review_params)
 
     if @review.save
@@ -39,13 +40,14 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def review_params
-      params.require(:review).permit(:content, :rating, :useful_count, :funny_count, :cool_count, :user_id, :business_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def review_params
+    params.require(:review).permit(:content, :rating, :useful_count, :funny_count, :cool_count, :user_id, :business_id)
+  end
 end

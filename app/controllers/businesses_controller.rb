@@ -4,13 +4,12 @@ class BusinessesController < ApplicationController
   # GET /businesses
   def index
     @businesses = Business.all
-
-    render json: @businesses
+    render json: @businesses, include: :reviews
   end
 
   # GET /businesses/1
   def show
-    render json: @business
+    render json: @business, include: :reviews
   end
 
   # POST /businesses
@@ -39,13 +38,14 @@ class BusinessesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_business
-      @business = Business.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def business_params
-      params.require(:business).permit(:name, :description, :address, :state, :zip, :contact, :website, :rating, :price)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_business
+    @business = Business.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def business_params
+    params.require(:business).permit(:name, :description, :address, :state, :zip, :contact, :website, :rating, :price)
+  end
 end

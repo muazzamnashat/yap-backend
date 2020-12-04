@@ -14,6 +14,7 @@ class BusinessesController < ApplicationController
 
   # POST /businesses
   def create
+    # binding.pry
     @business = Business.new(business_params)
 
     if @business.save

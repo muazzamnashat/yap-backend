@@ -10,5 +10,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    # binding.pry
+    user = User.find_by_id(params[:id])
+    if user
+      render json: user
+    else
+      render json: user.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
 end

@@ -16,12 +16,12 @@ Business.destroy_all
   phone = Faker::PhoneNumber.cell_phone
   businessName = Faker::Restaurant.name
   businessWeb = "www." + businessName.gsub(" ", "") + ".com"
-  user = User.create(first_name: Faker::Name.unique.name, last_name: Faker::Name.unique.name, email: Faker::Internet.email)
+  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email)
   business = Business.create(name: businessName, description: Faker::Restaurant.description,
                              address: Faker::Address.street_address,
                              state: Faker::Address.state,
                              zip: Faker::Address.zip,
-                             contact: phone.to_i,
+                             contact: phone,
                              website: businessWeb,
                              price: price)
   review = Review.new(content: Faker::Restaurant.review, rating: rating)

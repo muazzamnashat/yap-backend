@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :businesses
   resources :users
+  post "/login", to: "application#login"
   #   end
   # end
 

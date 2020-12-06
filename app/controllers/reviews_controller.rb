@@ -27,6 +27,7 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
+    # binding.pry
     if @review.update(review_params)
       render json: @review
     else

@@ -6,6 +6,7 @@ class Review < ApplicationRecord
   after_create :change_rating
   before_destroy :delete_rating
   around_update :update_rating
+  validates :rating, numericality: { less_than_or_equal_to: 5 }
 
   private
 

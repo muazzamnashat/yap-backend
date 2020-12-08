@@ -26,6 +26,7 @@ class BusinessesController < ApplicationController
 
   # PATCH/PUT /businesses/1
   def update
+    binding.pry
     if @business.update(business_params)
       render json: @business
     else

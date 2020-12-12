@@ -10,13 +10,16 @@ User.destroy_all
 Business.destroy_all
 # Review.destroy_all
 
-10.times do
+40.times do
   rating = rand(1..5)
   price = rand(1..5)
   phone = Faker::PhoneNumber.cell_phone
   businessName = Faker::Restaurant.name
   businessWeb = "www." + businessName.gsub(" ", "") + ".com"
-  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email)
+  user1 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email)
+  user2 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email)
+  user3 = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email)
+
   business = Business.create(name: businessName, description: Faker::Restaurant.description,
                              address: Faker::Address.street_address,
                              state: Faker::Address.state,
@@ -24,8 +27,18 @@ Business.destroy_all
                              contact: phone,
                              website: businessWeb,
                              price: price)
-  review = Review.new(content: Faker::Restaurant.review, rating: rating)
-  review.user = user
-  review.business = business
-  review.save
+  review1 = Review.new(content: Faker::Restaurant.review, rating: rating)
+  review1.user = user1
+  review1.business = business
+  review1.save
+
+  review2 = Review.new(content: Faker::Restaurant.review, rating: rating)
+  review2.user = user2
+  review2.business = business
+  review2.save
+
+  review3 = Review.new(content: Faker::Restaurant.review, rating: rating)
+  review3.user = user3
+  review3.business = business
+  review3.save
 end

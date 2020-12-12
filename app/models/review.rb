@@ -23,7 +23,12 @@ class Review < ApplicationRecord
     total_reviews = Review.where("business_id = #{self.business_id}").size
     total = current_rating * total_reviews
     updated_rating = (total - self.rating) / (total_reviews - 1)
-    Business.find_by_id(self.business_id).update(rating: updated_rating)
+    # binding.pry
+    if updated_rating > 0
+      Business.find_by_id(self.business_id).update(rating: updated_rating)
+    else
+      Business.find_by_id(self.business_id).update(rating: 0)
+    end
   end
 
   def update_rating

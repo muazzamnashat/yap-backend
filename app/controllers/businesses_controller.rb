@@ -14,7 +14,6 @@ class BusinessesController < ApplicationController
 
   # POST /businesses
   def create
-    # binding.pry
     @business = Business.new(business_params)
 
     if @business.save
@@ -26,7 +25,6 @@ class BusinessesController < ApplicationController
 
   # PATCH/PUT /businesses/1
   def update
-    binding.pry
     if @business.update(business_params)
       render json: @business
     else
@@ -48,6 +46,6 @@ class BusinessesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def business_params
-    params.require(:business).permit(:name, :description, :address, :state, :zip, :contact, :website, :rating, :price)
+    params.require(:business).permit(:name, :description, :address, :state, :zip, :contact, :website, :rating, :price, :image_url)
   end
 end

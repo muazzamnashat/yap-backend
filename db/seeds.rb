@@ -9,8 +9,20 @@ require "faker"
 User.destroy_all
 Business.destroy_all
 # Review.destroy_all
+images = [
+  "https://images2.minutemediacdn.com/image/upload/c_crop,h_1126,w_2000,x_0,y_181/f_auto,q_auto,w_1100/v1554932288/shape/mentalfloss/12531-istock-637790866.jpg",
+  "https://wallpapercave.com/wp/wp3495545.jpg",
+  "https://img.jakpost.net/c/2016/09/29/2016_09_29_12990_1475116504._large.jpg",
+  "https://www.wallpapers4u.org/wp-content/uploads/cheeseburger_sandwich_fast_food_1446_1920x1080.jpg",
+  "https://i.insider.com/5c5200a252414727b959e513?width=1100&format=jpeg&auto=webp",
+  "https://www.wallpapers4u.org/wp-content/uploads/chinese_cuisine_noodles_meat_greens_hot_components_5792_1920x1080.jpg",
+  "https://www.itl.cat/pngfile/big/212-2124047_chicken-food-wallpapers-full-hd-desktop-backgrounds-food.jpg",
+  "https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+  "https://www.teahub.io/photos/full/314-3149838_food-hd-wallpapers-1080p.jpg",
+  "https://images7.alphacoders.com/368/368875.jpg",
+]
 
-40.times do
+10.times do |i|
   rating = rand(1..5)
   price = rand(1..5)
   phone = Faker::PhoneNumber.cell_phone
@@ -26,6 +38,7 @@ Business.destroy_all
                              zip: Faker::Address.zip,
                              contact: phone,
                              website: businessWeb,
+                             image_url: images[i],
                              price: price)
   review1 = Review.new(content: Faker::Restaurant.review, rating: rating)
   review1.user = user1

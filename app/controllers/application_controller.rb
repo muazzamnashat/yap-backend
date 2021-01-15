@@ -8,4 +8,8 @@ class ApplicationController < ActionController::API
       render json: user.errors.full_messages, status: :unprocessable_entity
     end
   end
+
+  def welcome
+    
+  end
 end

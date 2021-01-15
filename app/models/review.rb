@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  default_scope { order created_at: :desc }
+  default_scope { order rating: :asc }
   validates_presence_of :rating
   belongs_to :user
   belongs_to :business

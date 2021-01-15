@@ -4,12 +4,14 @@ class BusinessesController < ApplicationController
   # GET /businesses
   def index
     @businesses = Business.all
-    render json: @businesses, include: :reviews
+    # render json: @businesses, include: :reviews ,include: :users
+    render json: @businesses.to_json(:include => { :reviews => { :include => :user } })
   end
 
   # GET /businesses/1
   def show
-    render json: @business, include: :reviews
+    # render json: @business, include: :reviews
+    render json: @business.to_json(:include => { :reviews => { :include => :user } })
   end
 
   # POST /businesses

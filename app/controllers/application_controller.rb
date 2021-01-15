@@ -10,6 +10,6 @@ class ApplicationController < ActionController::API
   end
 
   def welcome
-    
+    render "welcome"
   end
 end
